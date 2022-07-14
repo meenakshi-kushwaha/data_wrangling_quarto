@@ -1,0 +1,129 @@
+---
+title: "Data Wrangling with R"
+author: "Meenakshi Kushwaha"
+date: "21st July, 2022"
+format: 
+  revealjs:
+    theme: [my_theme.scss]
+    incremental: true
+
+execute:
+  echo: true
+---
+
+## Prerequsities
+
+```{r}
+library(gapminder) # data set
+library(tidyverse) # today's package
+```
+
+## Basics
+
+-   Pick observations by their values `filter()`.
+-   Reorder the rows `arrange()`.
+-   Pick variables by their names `select()`.
+-   Create new variables with functions of existing variables `mutate()`.
+-   Collapse many values down to a single summary `summarise()`
+    -   often used with `group_by()`
+
+## Code {auto-animate="true"}
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+a<- 1 + 1
+```
+
+## Code {auto-animate="true"}
+
+```{r}
+a<- 1 + 1
+print(a)
+
+```
+
+## Executable Code
+
+```{r}
+#| echo: true
+#| fig-width: 10
+#| fig-height: 4.5
+#| output-location: slide
+library(ggplot2)
+ggplot(mtcars, aes(hp, mpg, color = am)) +
+  geom_point() +  geom_smooth(formula = y ~ x, method = "loess")
+```
+
+::: footer
+Learn more: [Executable Code](https://quarto.org/docs/presentations/revealjs/#executable-code)
+:::
+
+## About the dataset {.smaller}
+
+Arrange content into columns of varying widths:
+
+::: columns
+::: {.column width="25%"}
+#### Gapminder dataset
+
+Dataset of 142 countries, with values for life expectancy, GDP per capita, and population, every five years, from 1952 to 2007
+:::
+
+::: {.column width="13%"}
+:::
+
+::: {.column width="62%"}
+```{r echo=FALSE}
+knitr::kable(head(gapminder))
+```
+:::
+:::
+
+::: footer
+Learn more: [Multiple Columns](https://quarto.org/docs/presentations/revealjs/#multiple-columns)
+:::
+
+## Gapminder dataset
+
+```{r}
+head(gapminder, 15)
+```
+
+## Fragments
+
+Incremental text display and animation with fragments:
+
+<br/>
+
+::: {.fragment .strike}
+Strike
+:::
+
+::: {.fragment .highlight-red}
+Highlight red
+:::
+
+::: footer
+Learn more: [Fragments](https://quarto.org/docs/presentations/revealjs/advanced.html#fragments)
+:::
+
+## Speaker notes
+
+::: notes
+Speaker notes go here.
+:::
+
+## Basic syntax
+
+function(argument 1, argument 2, argument 3, ...) - Result is a new dataframe - functions are nothing but verbs
+
+filter(dataframe, age == "20")
+
+## Filter rows with `filter()`
+
+```{r}
+#| echo: true
+#| output-location: fragment
+filter(gapminder, country == "India")
+```
