@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-  <meta charset="utf-8">
-  <meta name="generator" content="quarto-0.9.80">
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/tabby.min.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.0.27">
+
   <meta name="author" content="Meenakshi Kushwaha">
   <title>Data Wrangling with R</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -10,9 +17,6 @@
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
   <style>
-    .reveal .sourceCode {  /* see #7635 */
-      overflow: visible;
-    }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     span.underline{text-decoration: underline;}
@@ -49,49 +53,42 @@
       }
     pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
     div.sourceCode
-      {   }
+      { color: #003b4f; background-color: #f1f3f5; }
     @media screen {
     pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
     }
-    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-    code span.at { color: #7d9029; } /* Attribute */
-    code span.bn { color: #40a070; } /* BaseN */
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #4070a0; } /* Char */
-    code span.cn { color: #880000; } /* Constant */
-    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-    code span.dt { color: #902000; } /* DataType */
-    code span.dv { color: #40a070; } /* DecVal */
-    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
     code span.ex { } /* Extension */
-    code span.fl { color: #40a070; } /* Float */
-    code span.fu { color: #06287e; } /* Function */
-    code span.im { } /* Import */
-    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-    code span.op { color: #666666; } /* Operator */
-    code span.ot { color: #007020; } /* Other */
-    code span.pp { color: #bc7a00; } /* Preprocessor */
-    code span.sc { color: #4070a0; } /* SpecialChar */
-    code span.ss { color: #bb6688; } /* SpecialString */
-    code span.st { color: #4070a0; } /* String */
-    code span.va { color: #19177c; } /* Variable */
-    code span.vs { color: #4070a0; } /* VerbatimString */
-    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css" id="theme">
-
-  <script src="index_files/libs/clipboard/clipboard.min.js"></script>
-  <script src="index_files/libs/quarto-html/tabby.min.js"></script>
-  <script src="index_files/libs/quarto-html/popper.min.js"></script>
-  <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
-  <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-  <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet">
-  <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -105,7 +102,7 @@
   }
 
   .callout.callout-style-simple { 
-    padding: 0em 0.7em;
+    padding: 0em 0.5em;
     border-left: solid #acacac .3rem;
     border-right: solid 1px silver;
     border-top: solid 1px silver;
@@ -216,8 +213,7 @@
     display: none !important;
   }
 
-  .callout.callout-captioned .callout-body > :last-child,
-  .callout.callout-captioned .callout-body > div > :last-child {
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
     margin-bottom: 0.5rem;
   }
 
@@ -306,12 +302,6 @@
     .reveal .slide:not(.center) {
       height: 100%;
     }
-    .reveal #title-slide.center,
-    .reveal .title-slide.center,
-    .reveal .controls .navigate-left .controls-arrow,
-    .reveal .controls .navigate-right .controls-arrow {
-      margin-top: -15px;
-    }
     .reveal .slide.scrollable {
       overflow-y: auto;
     }
@@ -388,7 +378,7 @@
     }
   </style>
 </head>
-<body>
+<body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
@@ -400,56 +390,44 @@
 
 <section id="prerequsities" class="slide level2">
 <h2>Prerequsities</h2>
-<div class="cell">
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(gapminder) <span class="co"># data set</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse) <span class="co"># today's package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-1_215f3072ce2b05172e55d9eb19fa4702">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># today's package</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(gapminder) <span class="co"># data set</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="what-is-tidyverse" class="slide level2">
+<h2>What is <code>tidyverse</code></h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p>A <span style="color:#185596"><strong>collection of R packages</strong></span> designed for data science. All packages share an underlying design philosophy, grammar, and data structures.</p>
+</div><div class="column" style="width:40%;">
+<ul>
+<li class="fragment"><code>dplyr</code> for data manipulation</li>
+<li class="fragment"><code>ggplot2</code> for data visualizations</li>
+<li class="fragment"><code>readr</code> for reading data</li>
+<li class="fragment"><code>stringr</code> for string manipulation</li>
+</ul>
+</div>
+</div>
+<div class="footer">
+<p><a href="https://www.tidyverse.org/packages/">Learn more</a></p>
 </div>
 </section>
 <section id="basics" class="slide level2">
 <h2>Basics</h2>
 <ul>
-<li class="fragment">Pick observations by their values <code>filter()</code>.</li>
-<li class="fragment">Reorder the rows <code>arrange()</code>.</li>
-<li class="fragment">Pick variables by their names <code>select()</code>.</li>
-<li class="fragment">Create new variables with functions of existing variables <code>mutate()</code>.</li>
-<li class="fragment">Collapse many values down to a single summary <code>summarise()</code>
-<ul>
-<li class="fragment">often used with <code>group_by()</code></li>
-</ul></li>
+<li class="fragment">Pick observations by their values <code>filter()</code></li>
+<li class="fragment">Reorder the rows <code>arrange()</code></li>
+<li class="fragment">Pick variables by their names <code>select()</code></li>
+<li class="fragment">Create new variables with functions of existing variables <code>mutate()</code></li>
+<li class="fragment">Collapse many values down to a single summary <code>summarise()</code>, used with <code>group_by()</code></li>
 </ul>
-</section>
-<section id="code" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Code</h2>
-<p>When you click the <strong>Render</strong> button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
-<div class="cell">
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb2-1" class="hljs-ln-code"><a href="#cb2-1"></a>a<span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="code-1" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Code</h2>
-<div class="cell">
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb3-1" class="hljs-ln-code"><a href="#cb3-1"></a>a<span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb3-2" class="hljs-ln-code"><a href="#cb3-2"></a><span class="fu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-</section>
-<section id="executable-code" class="slide level2">
-<h2>Executable Code</h2>
-<div class="cell" data-output-location="slide">
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(hp, mpg, <span class="at">color =</span> am)) <span class="sc">+</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span>  <span class="fu">geom_smooth</span>(<span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">method =</span> <span class="st">"loess"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"><div class="footer">
-<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/#executable-code">Executable Code</a></p>
+<div class="fragment">
+<p><span style="color:#D0541B">These six functions provide the verbs for a language of data manipulation</span></p>
 </div>
 </section>
 <section id="about-the-dataset" class="slide level2 smaller">
 <h2>About the dataset</h2>
-<p>Arrange content into columns of varying widths:</p>
 <div class="columns">
 <div class="column" style="width:25%;">
 <h4 id="gapminder-dataset">Gapminder dataset</h4>
@@ -457,7 +435,7 @@
 </div><div class="column" style="width:13%;">
 
 </div><div class="column" style="width:62%;">
-<div class="cell">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-2_9e1b6b26ea8aa7d1c05e53642483c523">
 <div class="cell-output-display">
 <table>
 <thead>
@@ -526,14 +504,14 @@
 </div>
 </div>
 <div class="footer">
-<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/#multiple-columns">Multiple Columns</a></p>
+<p>Learn more: <a href="https://www.gapminder.org/data/documentation/">Gapminder</a></p>
 </div>
 </section>
 <section id="gapminder-dataset-1" class="slide level2">
 <h2>Gapminder dataset</h2>
-<div class="cell">
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">head</span>(gapminder, <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-3_d4f4255bac953ab9c424f58d577b1899">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">head</span>(gapminder, <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 15 × 6
    country     continent  year lifeExp      pop gdpPercap
    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
@@ -555,53 +533,932 @@
 </div>
 </div>
 </section>
-<section id="fragments" class="slide level2">
-<h2>Fragments</h2>
-<p>Incremental text display and animation with fragments:</p>
-<p><br></p>
-<div class="fragment strike">
-<p>Strike</p>
+<section id="filter" class="slide level2">
+<h2><code>filter()</code></h2>
+<p>Keep or discard observations that satisfy certain condition</p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-4_efe26aba460737cd3791ae4b82dc1524">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"India"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="fragment">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-5_2f70375fbb490d5f37fd7564bc1cd840">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">country</th>
+<th style="text-align: left;">continent</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: right;">lifeExp</th>
+<th style="text-align: right;">pop</th>
+<th style="text-align: right;">gdpPercap</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1952</td>
+<td style="text-align: right;">37.373</td>
+<td style="text-align: right;">3.72e+08</td>
+<td style="text-align: right;">546.5657</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1957</td>
+<td style="text-align: right;">40.249</td>
+<td style="text-align: right;">4.09e+08</td>
+<td style="text-align: right;">590.0620</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1962</td>
+<td style="text-align: right;">43.605</td>
+<td style="text-align: right;">4.54e+08</td>
+<td style="text-align: right;">658.3472</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1967</td>
+<td style="text-align: right;">47.193</td>
+<td style="text-align: right;">5.06e+08</td>
+<td style="text-align: right;">700.7706</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1972</td>
+<td style="text-align: right;">50.651</td>
+<td style="text-align: right;">5.67e+08</td>
+<td style="text-align: right;">724.0325</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1977</td>
+<td style="text-align: right;">54.208</td>
+<td style="text-align: right;">6.34e+08</td>
+<td style="text-align: right;">813.3373</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="filter-1" class="slide level2">
+<h2><code>filter()</code></h2>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-6_1592d83301b39d172feee5a217328e72">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"India"</span>, year <span class="sc">&lt;</span> <span class="dv">1975</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div style="font-size: 0.75em">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-7_77d436628539b07b30acc7cb28fcdc84">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">country</th>
+<th style="text-align: left;">continent</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: right;">lifeExp</th>
+<th style="text-align: right;">pop</th>
+<th style="text-align: right;">gdpPercap</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1952</td>
+<td style="text-align: right;">37.373</td>
+<td style="text-align: right;">3.72e+08</td>
+<td style="text-align: right;">546.5657</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1957</td>
+<td style="text-align: right;">40.249</td>
+<td style="text-align: right;">4.09e+08</td>
+<td style="text-align: right;">590.0620</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1962</td>
+<td style="text-align: right;">43.605</td>
+<td style="text-align: right;">4.54e+08</td>
+<td style="text-align: right;">658.3472</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1967</td>
+<td style="text-align: right;">47.193</td>
+<td style="text-align: right;">5.06e+08</td>
+<td style="text-align: right;">700.7706</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1972</td>
+<td style="text-align: right;">50.651</td>
+<td style="text-align: right;">5.67e+08</td>
+<td style="text-align: right;">724.0325</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="quiz" class="slide level2">
+<h2>Quiz</h2>
+<div>
+<p>How would you filter data from all asian countries that have life expectancy (<code>lifeExp</code>) of 80 or higher?</p>
+<ol type="a">
+<li><p>gapminder %&gt;% filter(continent = “Asia”, lifeExp&gt;“80”)</p></li>
+<li><p>gapminder %&gt;% filter(continent = “Asia”, lifeExp&gt;80)</p></li>
+</ol>
 <div class="fragment highlight-red">
-<p>Highlight red</p>
+<ol start="3" type="a">
+<li>gapminder %&gt;% filter(continent == Asia, lifeExp&gt;80)</li>
+</ol>
 </div>
-<div class="footer">
-<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/advanced.html#fragments">Fragments</a></p>
+<ol start="4" type="a">
+<li>gapminder %&gt;% filter(continent == “Asia”, lifeExp&gt;80)</li>
+</ol>
 </div>
 </section>
-<section id="speaker-notes" class="slide level2">
-<h2>Speaker notes</h2>
-<aside class="notes">
-<p>Speaker notes go here.</p>
-</aside>
-</section>
-<section id="basic-syntax" class="slide level2">
-<h2>Basic syntax</h2>
-<p>function(argument 1, argument 2, argument 3, …) - Result is a new dataframe - functions are nothing but verbs</p>
-<p>filter(dataframe, age == “20”)</p>
-</section>
-<section id="filter-rows-with-filter" class="slide level2">
-<h2>Filter rows with <code>filter()</code></h2>
-<div class="cell" data-output-location="fragment">
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">filter</span>(gapminder, country <span class="sc">==</span> <span class="st">"India"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
-<pre><code># A tibble: 12 × 6
-   country continent  year lifeExp        pop gdpPercap
-   &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;      &lt;int&gt;     &lt;dbl&gt;
- 1 India   Asia       1952    37.4  372000000      547.
- 2 India   Asia       1957    40.2  409000000      590.
- 3 India   Asia       1962    43.6  454000000      658.
- 4 India   Asia       1967    47.2  506000000      701.
- 5 India   Asia       1972    50.7  567000000      724.
- 6 India   Asia       1977    54.2  634000000      813.
- 7 India   Asia       1982    56.6  708000000      856.
- 8 India   Asia       1987    58.6  788000000      977.
- 9 India   Asia       1992    60.2  872000000     1164.
-10 India   Asia       1997    61.8  959000000     1459.
-11 India   Asia       2002    62.9 1034172547     1747.
-12 India   Asia       2007    64.7 1110396331     2452.</code></pre>
+<section id="filter-2" class="slide level2">
+<h2><code class="smaller">filter()</code></h2>
+<p>the <code>|</code> operator signifies “or”</p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-8_abf923ea99813a00c48ecba36f175636">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">filter</span>(country<span class="sc">==</span><span class="st">"India"</span> <span class="sc">|</span> country <span class="sc">==</span> <span class="st">"Nepal"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div style="font-size: 0.45em">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-9_5d1846a524c80f794c86bb171e7cccc5">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">country</th>
+<th style="text-align: left;">continent</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: right;">lifeExp</th>
+<th style="text-align: right;">pop</th>
+<th style="text-align: right;">gdpPercap</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1952</td>
+<td style="text-align: right;">37.373</td>
+<td style="text-align: right;">372000000</td>
+<td style="text-align: right;">546.5657</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1957</td>
+<td style="text-align: right;">40.249</td>
+<td style="text-align: right;">409000000</td>
+<td style="text-align: right;">590.0620</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1962</td>
+<td style="text-align: right;">43.605</td>
+<td style="text-align: right;">454000000</td>
+<td style="text-align: right;">658.3472</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1967</td>
+<td style="text-align: right;">47.193</td>
+<td style="text-align: right;">506000000</td>
+<td style="text-align: right;">700.7706</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1972</td>
+<td style="text-align: right;">50.651</td>
+<td style="text-align: right;">567000000</td>
+<td style="text-align: right;">724.0325</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1977</td>
+<td style="text-align: right;">54.208</td>
+<td style="text-align: right;">634000000</td>
+<td style="text-align: right;">813.3373</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1982</td>
+<td style="text-align: right;">56.596</td>
+<td style="text-align: right;">708000000</td>
+<td style="text-align: right;">855.7235</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1987</td>
+<td style="text-align: right;">58.553</td>
+<td style="text-align: right;">788000000</td>
+<td style="text-align: right;">976.5127</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1992</td>
+<td style="text-align: right;">60.223</td>
+<td style="text-align: right;">872000000</td>
+<td style="text-align: right;">1164.4068</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1997</td>
+<td style="text-align: right;">61.765</td>
+<td style="text-align: right;">959000000</td>
+<td style="text-align: right;">1458.8174</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">2002</td>
+<td style="text-align: right;">62.879</td>
+<td style="text-align: right;">1034172547</td>
+<td style="text-align: right;">1746.7695</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">2007</td>
+<td style="text-align: right;">64.698</td>
+<td style="text-align: right;">1110396331</td>
+<td style="text-align: right;">2452.2104</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nepal</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1952</td>
+<td style="text-align: right;">36.157</td>
+<td style="text-align: right;">9182536</td>
+<td style="text-align: right;">545.8657</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nepal</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1957</td>
+<td style="text-align: right;">37.686</td>
+<td style="text-align: right;">9682338</td>
+<td style="text-align: right;">597.9364</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
+</div>
+</div>
+</section>
+<section id="filter-3" class="slide level2">
+<h2><code class="smaller">filter()</code></h2>
+<p>Using <code>%&gt;%</code> to match more than one value</p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-10_bbb743f4cabbea5b4647b35af2550228">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1952</span>,<span class="dv">1962</span>, <span class="dv">1972</span> ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div style="font-size: 0.75em">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-11_6c68858e1c4c06c00d1621c9c3f77d1f">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">country</th>
+<th style="text-align: left;">continent</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: right;">lifeExp</th>
+<th style="text-align: right;">pop</th>
+<th style="text-align: right;">gdpPercap</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1952</td>
+<td style="text-align: right;">28.801</td>
+<td style="text-align: right;">8425333</td>
+<td style="text-align: right;">779.4453</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1962</td>
+<td style="text-align: right;">31.997</td>
+<td style="text-align: right;">10267083</td>
+<td style="text-align: right;">853.1007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1972</td>
+<td style="text-align: right;">36.088</td>
+<td style="text-align: right;">13079460</td>
+<td style="text-align: right;">739.9811</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Albania</td>
+<td style="text-align: left;">Europe</td>
+<td style="text-align: right;">1952</td>
+<td style="text-align: right;">55.230</td>
+<td style="text-align: right;">1282697</td>
+<td style="text-align: right;">1601.0561</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Albania</td>
+<td style="text-align: left;">Europe</td>
+<td style="text-align: right;">1962</td>
+<td style="text-align: right;">64.820</td>
+<td style="text-align: right;">1728137</td>
+<td style="text-align: right;">2312.8890</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Albania</td>
+<td style="text-align: left;">Europe</td>
+<td style="text-align: right;">1972</td>
+<td style="text-align: right;">67.690</td>
+<td style="text-align: right;">2263554</td>
+<td style="text-align: right;">3313.4222</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Algeria</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">1952</td>
+<td style="text-align: right;">43.077</td>
+<td style="text-align: right;">9279525</td>
+<td style="text-align: right;">2449.0082</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Algeria</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">1962</td>
+<td style="text-align: right;">48.303</td>
+<td style="text-align: right;">11000948</td>
+<td style="text-align: right;">2550.8169</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="arrange" class="slide level2">
+<h2><code>arrange()</code></h2>
+<p>Arrange rows in asending order by default</p>
+<div class="fragment">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-12_f781f350e03850a62c121f3746e4ef48">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1952</span>,<span class="dv">1962</span>, <span class="dv">1972</span> )) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">arrange</span>(year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<div style="font-size: 0.75em">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-13_063a457565f5f40479b3f7a1e54a11df">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">country</th>
+<th style="text-align: left;">continent</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: right;">lifeExp</th>
+<th style="text-align: right;">pop</th>
+<th style="text-align: right;">gdpPercap</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1952</td>
+<td style="text-align: right;">28.801</td>
+<td style="text-align: right;">8425333</td>
+<td style="text-align: right;">779.4453</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Albania</td>
+<td style="text-align: left;">Europe</td>
+<td style="text-align: right;">1952</td>
+<td style="text-align: right;">55.230</td>
+<td style="text-align: right;">1282697</td>
+<td style="text-align: right;">1601.0561</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Algeria</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">1952</td>
+<td style="text-align: right;">43.077</td>
+<td style="text-align: right;">9279525</td>
+<td style="text-align: right;">2449.0082</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Angola</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">1952</td>
+<td style="text-align: right;">30.015</td>
+<td style="text-align: right;">4232095</td>
+<td style="text-align: right;">3520.6103</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Argentina</td>
+<td style="text-align: left;">Americas</td>
+<td style="text-align: right;">1952</td>
+<td style="text-align: right;">62.485</td>
+<td style="text-align: right;">17876956</td>
+<td style="text-align: right;">5911.3151</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Australia</td>
+<td style="text-align: left;">Oceania</td>
+<td style="text-align: right;">1952</td>
+<td style="text-align: right;">69.120</td>
+<td style="text-align: right;">8691212</td>
+<td style="text-align: right;">10039.5956</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="arrange-1" class="slide level2">
+<h2><code>arrange()</code></h2>
+<p>Arrange rows in descening order using <code>desc</code></p>
+<div class="fragment">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-14_e56fc294a1c56d8cc4fb5614542fc946">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1952</span>,<span class="dv">1962</span>, <span class="dv">1972</span> )) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(year))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<div style="font-size: 0.75em">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-15_6a096028ad0cf6719ea0a309ebc2d4c4">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">country</th>
+<th style="text-align: left;">continent</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: right;">lifeExp</th>
+<th style="text-align: right;">pop</th>
+<th style="text-align: right;">gdpPercap</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1972</td>
+<td style="text-align: right;">36.088</td>
+<td style="text-align: right;">13079460</td>
+<td style="text-align: right;">739.9811</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Albania</td>
+<td style="text-align: left;">Europe</td>
+<td style="text-align: right;">1972</td>
+<td style="text-align: right;">67.690</td>
+<td style="text-align: right;">2263554</td>
+<td style="text-align: right;">3313.4222</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Algeria</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">1972</td>
+<td style="text-align: right;">54.518</td>
+<td style="text-align: right;">14760787</td>
+<td style="text-align: right;">4182.6638</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Angola</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">1972</td>
+<td style="text-align: right;">37.928</td>
+<td style="text-align: right;">5894858</td>
+<td style="text-align: right;">5473.2880</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Argentina</td>
+<td style="text-align: left;">Americas</td>
+<td style="text-align: right;">1972</td>
+<td style="text-align: right;">67.065</td>
+<td style="text-align: right;">24779799</td>
+<td style="text-align: right;">9443.0385</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Australia</td>
+<td style="text-align: left;">Oceania</td>
+<td style="text-align: right;">1972</td>
+<td style="text-align: right;">71.930</td>
+<td style="text-align: right;">13177000</td>
+<td style="text-align: right;">16788.6295</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="quiz-1" class="slide level2">
+<h2>Quiz</h2>
+<div>
+<p>Select the code to arrange population (<code>pop</code>) in descening order</p>
+<ol type="a">
+<li>gapminder %&gt;% filter(pop)</li>
+</ol>
+<div class="fragment highlight-red">
+<ol start="2" type="a">
+<li>gapminder %&gt;% arrange(desc(pop))</li>
+</ol>
+</div>
+<ol start="3" type="a">
+<li><p>gapminder %&gt;% arrange(pop)</p></li>
+<li><p>gapminder %&gt;% arrange(year)</p></li>
+</ol>
+</div>
+</section>
+<section id="select" class="slide level2">
+<h2><code>select()</code></h2>
+<p>Select variables or columns of interest</p>
+<div class="fragment">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-16_c116de4c35815d6abdb067b6bbc2196c">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">select</span>(country, year, pop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<div style="font-size: 0.75em">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-17_8bbdfb7adb533acaed0a3321ddbf060e">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">country</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: right;">pop</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: right;">1952</td>
+<td style="text-align: right;">8425333</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: right;">1957</td>
+<td style="text-align: right;">9240934</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: right;">1962</td>
+<td style="text-align: right;">10267083</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: right;">1967</td>
+<td style="text-align: right;">11537966</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: right;">1972</td>
+<td style="text-align: right;">13079460</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: right;">1977</td>
+<td style="text-align: right;">14880372</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="select-1" class="slide level2">
+<h2><code>select()</code></h2>
+<p>Drop variables using <code>-</code></p>
+<div class="fragment">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-18_11848631fcee1138f9d391f8d57dde05">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">select</span>(<span class="sc">-</span>pop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<div style="font-size: 0.75em">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-19_b82cdce7a6056e3e58505238cb01cca8">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">country</th>
+<th style="text-align: left;">continent</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: right;">lifeExp</th>
+<th style="text-align: right;">gdpPercap</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1952</td>
+<td style="text-align: right;">28.801</td>
+<td style="text-align: right;">779.4453</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1957</td>
+<td style="text-align: right;">30.332</td>
+<td style="text-align: right;">820.8530</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1962</td>
+<td style="text-align: right;">31.997</td>
+<td style="text-align: right;">853.1007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1967</td>
+<td style="text-align: right;">34.020</td>
+<td style="text-align: right;">836.1971</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1972</td>
+<td style="text-align: right;">36.088</td>
+<td style="text-align: right;">739.9811</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1977</td>
+<td style="text-align: right;">38.438</td>
+<td style="text-align: right;">786.1134</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="select-2" class="slide level2">
+<h2><code>select()</code></h2>
+<p>There are a number of helper functions you can use within select():</p>
+<ul>
+<li class="fragment"><p>starts_with(“abc”): matches names that begin with “abc”</p></li>
+<li class="fragment"><p>ends_with(“xyz”): matches names that end with “xyz”</p></li>
+<li class="fragment"><p>contains(“ijk”): matches names that contain “ijk”</p></li>
+<li class="fragment"><p>matches(“(.)\1”): selects variables that match a regular expression</p></li>
+<li class="fragment"><p>num_range(“x”, 1:3): matches x1, x2 and x3</p></li>
+</ul>
+</section>
+<section id="mutate" class="slide level2">
+<h2><code>mutate()</code></h2>
+<p>Adds new variable at the end of your dataset</p>
+<div class="fragment">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-20_b3f43e3930a86932bedbcd730f107e9f">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">select</span>(country, pop) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">mutate</span>(<span class="at">pop_mil =</span> <span class="fu">round</span>(pop<span class="sc">/</span><span class="dv">1000000</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<div style="font-size: 0.75em">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-21_3c705479de67cc0ecde61e8b9974774d">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">country</th>
+<th style="text-align: right;">pop</th>
+<th style="text-align: right;">pop_mil</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: right;">8425333</td>
+<td style="text-align: right;">8.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: right;">9240934</td>
+<td style="text-align: right;">9.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: right;">10267083</td>
+<td style="text-align: right;">10.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: right;">11537966</td>
+<td style="text-align: right;">11.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: right;">13079460</td>
+<td style="text-align: right;">13.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: right;">14880372</td>
+<td style="text-align: right;">14.9</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="mutate-1" class="slide level2">
+<h2><code>mutate()</code></h2>
+<p>Some of the ways that you can create new variables</p>
+<ul>
+<li class="fragment">Arithmetic operators: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>^</code></li>
+<li class="fragment">Modular arithmetic: <code>%/%</code> (integer division) and <code>%%</code> (remainder)</li>
+<li class="fragment">Logs: <code>log()</code>, <code>log2()</code>, <code>log10()</code>, etc.</li>
+<li class="fragment">Offsets: <code>lead()</code> and <code>lag()</code></li>
+<li class="fragment">Logical comparisons: <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>!=</code>, and <code>==</code></li>
+<li class="fragment">Ranking eg. <code>min_rank()</code></li>
+</ul>
+</section>
+<section id="mutate-2" class="slide level2">
+<h2><code>mutate()</code></h2>
+<p>Example</p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-22_99fd736eac161c42a3a82033f6e761a2">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">select</span>(country, year, pop) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">mutate</span>(<span class="at">pop_rank =</span> <span class="fu">min_rank</span>(pop)) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">arrange</span>(pop_rank)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div style="font-size: 0.75em">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-23_c9d5ab215e38cf1ee9340c6cc5d2f3b5">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">country</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: right;">pop</th>
+<th style="text-align: right;">pop_rank</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Sao Tome and Principe</td>
+<td style="text-align: right;">1952</td>
+<td style="text-align: right;">60011</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sao Tome and Principe</td>
+<td style="text-align: right;">1957</td>
+<td style="text-align: right;">61325</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Djibouti</td>
+<td style="text-align: right;">1952</td>
+<td style="text-align: right;">63149</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sao Tome and Principe</td>
+<td style="text-align: right;">1962</td>
+<td style="text-align: right;">65345</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sao Tome and Principe</td>
+<td style="text-align: right;">1967</td>
+<td style="text-align: right;">70787</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Djibouti</td>
+<td style="text-align: right;">1957</td>
+<td style="text-align: right;">71851</td>
+<td style="text-align: right;">6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="transmute" class="slide level2">
+<h2><code>transmute</code>()</h2>
+<p>If you only want to keep the new variable use <code>transmute()</code></p>
+<div class="fragment">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-24_ba828c5302bff649889d58faebd96c2d">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">select</span>(country, pop) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">mutate</span>(<span class="at">pop =</span> <span class="fu">round</span>(pop<span class="sc">/</span><span class="dv">1000000</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<div style="font-size: 0.75em">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-25_2bb93031286ddd876d27aa0554fb29fc">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">country</th>
+<th style="text-align: right;">pop</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: right;">8.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: right;">9.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: right;">10.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: right;">11.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: right;">13.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: right;">14.9</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="summarise" class="slide level2">
+<h2><code>summarise()</code></h2>
+<p>Collapse data frame to a single row</p>
+</section>
+<section id="groupby" class="slide level2">
+<h2><code>groupby()</code></h2>
+<p>ungroup</p>
+</section>
+<section id="useful-summary-functions" class="slide level2">
+<h2>Useful summary functions</h2>
+</section>
+<section id="using-the-pipe" class="slide level2">
+<h2>Using the pipe</h2>
 <div class="footer footer-default">
 
 </div>
@@ -611,19 +1468,19 @@
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
   <script src="index_files/libs/revealjs/dist/reveal.js"></script>
-
   <!-- reveal.js plugins -->
   <script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
   <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
   <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
   <script src="index_files/libs/revealjs/plugin/notes/notes.js"></script>
   <script src="index_files/libs/revealjs/plugin/search/search.js"></script>
   <script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script>
   <script src="index_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
 
   <script>
 
@@ -637,10 +1494,9 @@
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'smaller': false,
-
+ 
         // Display controls in the bottom right corner
         controls: false,
 
@@ -860,8 +1716,26 @@
       })();
     </script>
 
-    <script type="application/javascript">
+    <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
       const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
@@ -878,7 +1752,10 @@
         button.blur();
         // flash "checked"
         button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
         setTimeout(function() {
+          button.setAttribute("title", currentTitle);
           button.classList.remove('code-copy-button-checked');
         }, 1000);
         // clear code selection

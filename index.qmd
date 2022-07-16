@@ -6,62 +6,58 @@ format:
   revealjs:
     theme: [my_theme.scss]
     incremental: true
-
+   
 execute:
   echo: true
+  cache: true
 ---
 
 ## Prerequsities
 
 ```{r}
-library(gapminder) # data set
 library(tidyverse) # today's package
+library(gapminder) # data set
 ```
+
+
+## What is `tidyverse`
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+A [**collection of R packages**]{style="color:#185596"} designed for data science. All packages share an underlying design philosophy, grammar, and data structures.
+
+:::
+
+::: {.column width="40%"}
+
+- `dplyr` for data manipulation
+- `ggplot2` for data visualizations
+- `readr` for reading data
+- `stringr` for string manipulation
+
+:::
+
+::::
+
+::: footer
+[Learn more](https://www.tidyverse.org/packages/)
+:::
 
 ## Basics
 
--   Pick observations by their values `filter()`.
--   Reorder the rows `arrange()`.
--   Pick variables by their names `select()`.
--   Create new variables with functions of existing variables `mutate()`.
--   Collapse many values down to a single summary `summarise()`
-    -   often used with `group_by()`
+-   Pick observations by their values `filter()`
+-   Reorder the rows `arrange()`
+-   Pick variables by their names `select()`
+-   Create new variables with functions of existing variables `mutate()`
+-   Collapse many values down to a single summary `summarise()`, used with `group_by()`
 
-## Code {auto-animate="true"}
+. . .
 
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
-
-```{r}
-a<- 1 + 1
-```
-
-## Code {auto-animate="true"}
-
-```{r}
-a<- 1 + 1
-print(a)
-
-```
-
-## Executable Code
-
-```{r}
-#| echo: true
-#| fig-width: 10
-#| fig-height: 4.5
-#| output-location: slide
-library(ggplot2)
-ggplot(mtcars, aes(hp, mpg, color = am)) +
-  geom_point() +  geom_smooth(formula = y ~ x, method = "loess")
-```
-
-::: footer
-Learn more: [Executable Code](https://quarto.org/docs/presentations/revealjs/#executable-code)
-:::
+[These six functions provide the verbs for a language of data manipulation]{style="color:#D0541B"}
 
 ## About the dataset {.smaller}
-
-Arrange content into columns of varying widths:
 
 ::: columns
 ::: {.column width="25%"}
@@ -81,7 +77,7 @@ knitr::kable(head(gapminder))
 :::
 
 ::: footer
-Learn more: [Multiple Columns](https://quarto.org/docs/presentations/revealjs/#multiple-columns)
+Learn more: [Gapminder](https://www.gapminder.org/data/documentation/)
 :::
 
 ## Gapminder dataset
@@ -90,40 +86,345 @@ Learn more: [Multiple Columns](https://quarto.org/docs/presentations/revealjs/#m
 head(gapminder, 15)
 ```
 
-## Fragments
 
-Incremental text display and animation with fragments:
+## `filter()` 
 
-<br/>
-
-::: {.fragment .strike}
-Strike
-:::
-
-::: {.fragment .highlight-red}
-Highlight red
-:::
-
-::: footer
-Learn more: [Fragments](https://quarto.org/docs/presentations/revealjs/advanced.html#fragments)
-:::
-
-## Speaker notes
-
-::: notes
-Speaker notes go here.
-:::
-
-## Basic syntax
-
-function(argument 1, argument 2, argument 3, ...) - Result is a new dataframe - functions are nothing but verbs
-
-filter(dataframe, age == "20")
-
-## Filter rows with `filter()`
+Keep or discard observations that satisfy certain condition
 
 ```{r}
 #| echo: true
-#| output-location: fragment
-filter(gapminder, country == "India")
+#| eval: false
+gapminder %>% 
+  filter(country == "India")
 ```
+
+::: {.fragment}
+
+```{r}
+#| echo: false
+knitr::kable(head(filter(gapminder, country == "India")))
+```
+:::
+
+
+## `filter()`
+
+
+```{r}
+#| echo: true
+#| eval: false
+gapminder %>% 
+  filter(country == "India", year < 1975)
+```
+
+::: {.fragment}
+::: {style="font-size: 0.75em"}
+```{r}
+#| echo: false
+knitr::kable(filter(gapminder, country == "India", year<1975))
+```
+:::
+:::
+
+## Quiz
+::: {.nonincremental}
+How would you filter data from all asian countries that have life expectancy (`lifeExp`) of 80 or higher?
+
+a) gapminder %>% filter(continent = "Asia", lifeExp>"80")
+
+b) gapminder %>% filter(continent = "Asia", lifeExp>80)
+
+:::{.fragment .highlight-red}
+c) gapminder %>% filter(continent == Asia, lifeExp>80)
+:::
+d) gapminder %>% filter(continent == "Asia", lifeExp>80)
+:::
+
+
+
+## `filter()`{.smaller}
+
+the `|` operator signifies "or"
+
+```{r}
+#| echo: true
+#| eval: false
+gapminder %>% 
+  filter(country=="India" | country == "Nepal")
+```
+
+
+:::{.fragment}
+::: {style="font-size: 0.45em"}
+```{r}
+#| echo: false
+knitr::kable(gapminder %>% 
+  filter(country=="India" | country == "Nepal") %>% 
+    head(14))
+```
+:::
+:::
+
+## `filter()`{.smaller}
+Using `%>%` to match more than one value
+
+```{r}
+#| echo: true
+#| eval: false
+gapminder %>% 
+  filter(year %in% c(1952,1962, 1972 ))
+```
+
+
+:::{.fragment}
+::: {style="font-size: 0.75em"}
+```{r}
+#| echo: false
+knitr::kable(gapminder %>% 
+  filter(year %in% c(1952,1962,1972 )) %>% 
+    head(8))
+```
+:::
+:::
+
+
+## `arrange()`
+
+Arrange rows in asending order by default
+
+:::{.fragment}
+```{r}
+#| echo: true
+#| eval: false
+gapminder %>% 
+  filter(year %in% c(1952,1962, 1972 )) %>% 
+  arrange(year)
+```
+:::
+
+:::{.fragment}
+::: {style="font-size: 0.75em"}
+```{r}
+#| echo: false
+knitr::kable(gapminder %>% 
+  filter(year %in% c(1952,1962,1972 )) %>% 
+    arrange(year) %>% 
+    head())
+```
+:::
+:::
+
+
+## `arrange()`
+
+Arrange rows in descening order using `desc`
+
+:::{.fragment}
+```{r}
+#| echo: true
+#| eval: false
+gapminder %>% 
+  filter(year %in% c(1952,1962, 1972 )) %>% 
+  arrange(desc(year))
+```
+:::
+
+:::{.fragment}
+::: {style="font-size: 0.75em"}
+```{r}
+#| echo: false
+knitr::kable(gapminder %>% 
+  filter(year %in% c(1952,1962,1972 )) %>% 
+    arrange(desc(year)) %>% 
+    head())
+```
+:::
+:::
+
+## Quiz
+::: {.nonincremental}
+Select the code to arrange population (`pop`) in descening order
+
+a) gapminder %>% filter(pop)
+
+::: {.fragment .highlight-red}
+b) gapminder %>% arrange(desc(pop))
+:::
+c) gapminder %>% arrange(pop)  
+
+
+d) gapminder %>% arrange(year)
+:::
+
+## `select()`
+
+Select variables or columns of interest
+
+:::{.fragment}
+```{r}
+#| echo: true
+#| eval: false
+gapminder %>% 
+  select(country, year, pop)
+```
+:::
+
+:::{.fragment}
+::: {style="font-size: 0.75em"}
+```{r}
+#| echo: false
+knitr::kable(gapminder %>% 
+  select(country, year, pop) %>% 
+    head())
+```
+:::
+:::
+
+## `select()`
+
+Drop variables using `-`
+
+:::{.fragment}
+```{r}
+#| echo: true
+#| eval: false
+gapminder %>% 
+  select(-pop)
+```
+:::
+
+:::{.fragment}
+::: {style="font-size: 0.75em"}
+```{r}
+#| echo: false
+knitr::kable(gapminder %>% 
+  select(-pop) %>% 
+    head())
+```
+:::
+:::
+
+## `select()`
+
+There are a number of helper functions you can use within select():
+
+- starts_with("abc"): matches names that begin with “abc”
+
+- ends_with("xyz"): matches names that end with “xyz”
+
+- contains("ijk"): matches names that contain “ijk”
+
+- matches("(.)\\1"): selects variables that match a regular expression
+
+- num_range("x", 1:3): matches x1, x2 and x3
+
+
+## `mutate()`
+
+Adds new variable at the end of your dataset
+
+:::{.fragment}
+
+```{r}
+#| echo: true
+#| eval: false
+gapminder %>% 
+  select(country, pop) %>% 
+  mutate(pop_mil = round(pop/1000000, 1))
+  
+```
+:::
+
+:::{.fragment}
+::: {style="font-size: 0.75em"}
+```{r}
+#| echo: false
+knitr::kable(gapminder %>% 
+  select(country, pop) %>% 
+  mutate(pop_mil = round(pop/1000000, 1)) %>% 
+    head())
+```
+:::
+:::
+
+
+## `mutate()`
+
+Some of the ways that you can create new variables
+
+- Arithmetic operators: `+`, `-`, `*`, `/`, `^`
+- Modular arithmetic: `%/%` (integer division) and `%%` (remainder)
+- Logs: `log()`, `log2()`, `log10()`, etc.
+- Offsets: `lead()` and `lag()`
+- Logical comparisons: `<`, `<=`, `>`, `>=`, `!=`, and `==`
+- Ranking eg. `min_rank()`
+
+## `mutate()`
+Example
+```{r}
+#| echo: true
+#| eval: false
+gapminder %>% 
+  select(country, year, pop) %>% 
+  mutate(pop_rank = min_rank(pop)) %>% 
+  arrange(pop_rank)
+  
+```
+
+:::{.fragment}
+::: {style="font-size: 0.75em"}
+```{r}
+#| echo: false
+knitr::kable(gapminder %>% 
+  select(country, year, pop) %>% 
+  mutate(pop_rank = min_rank(pop)) %>% 
+  arrange(pop_rank) %>% 
+    head())
+```
+:::
+:::
+
+## `transmute`()
+
+If you only want to keep the new variable use `transmute()`
+
+:::{.fragment}
+
+```{r}
+#| echo: true
+#| eval: false
+gapminder %>% 
+  select(country, pop) %>% 
+  mutate(pop = round(pop/1000000, 1))
+  
+```
+:::
+
+:::{.fragment}
+::: {style="font-size: 0.75em"}
+```{r}
+#| echo: false
+knitr::kable(gapminder %>% 
+  select(country, pop) %>% 
+  mutate(pop = round(pop/1000000, 1)) %>% 
+    head())
+```
+:::
+:::
+
+## `summarise()`
+
+Collapse data frame to a single row
+
+## `groupby()`
+
+ungroup
+
+## Useful summary functions
+
+
+## Using the pipe 
+
+
+
+
