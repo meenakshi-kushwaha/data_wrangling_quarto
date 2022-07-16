@@ -19,27 +19,20 @@ library(tidyverse) # today's package
 library(gapminder) # data set
 ```
 
-
 ## What is `tidyverse`
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="60%"}
-
 A [**collection of R packages**]{style="color:#185596"} designed for data science. All packages share an underlying design philosophy, grammar, and data structures.
-
 :::
 
 ::: {.column width="40%"}
-
-- `dplyr` for data manipulation
-- `ggplot2` for data visualizations
-- `readr` for reading data
-- `stringr` for string manipulation
-
+-   `dplyr` for data manipulation
+-   `ggplot2` for data visualizations
+-   `readr` for reading data
+-   `stringr` for string manipulation
 :::
-
-::::
+:::
 
 ::: footer
 [Learn more](https://www.tidyverse.org/packages/)
@@ -86,8 +79,7 @@ Learn more: [Gapminder](https://www.gapminder.org/data/documentation/)
 head(gapminder, 15)
 ```
 
-
-## `filter()` 
+## `filter()`
 
 Keep or discard observations that satisfy certain condition
 
@@ -98,17 +90,14 @@ gapminder %>%
   filter(country == "India")
 ```
 
-::: {.fragment}
-
+::: fragment
 ```{r}
 #| echo: false
 knitr::kable(head(filter(gapminder, country == "India")))
 ```
 :::
 
-
 ## `filter()`
-
 
 ```{r}
 #| echo: true
@@ -117,7 +106,7 @@ gapminder %>%
   filter(country == "India", year < 1975)
 ```
 
-::: {.fragment}
+::: fragment
 ::: {style="font-size: 0.75em"}
 ```{r}
 #| echo: false
@@ -127,20 +116,20 @@ knitr::kable(filter(gapminder, country == "India", year<1975))
 :::
 
 ## Quiz
-::: {.nonincremental}
+
+::: nonincremental
 How would you filter data from all asian countries that have life expectancy (`lifeExp`) of 80 or higher?
 
-a) gapminder %>% filter(continent = "Asia", lifeExp>"80")
+a)  gapminder %\>% filter(continent = "Asia", lifeExp\>"80")
 
-b) gapminder %>% filter(continent = "Asia", lifeExp>80)
+b)  gapminder %\>% filter(continent = "Asia", lifeExp\>80)
 
-:::{.fragment .highlight-red}
-c) gapminder %>% filter(continent == Asia, lifeExp>80)
-:::
-d) gapminder %>% filter(continent == "Asia", lifeExp>80)
+::: {.fragment .highlight-red}
+c)  gapminder %\>% filter(continent == Asia, lifeExp\>80)
 :::
 
-
+d)  gapminder %\>% filter(continent == "Asia", lifeExp\>80)
+:::
 
 ## `filter()`{.smaller}
 
@@ -153,8 +142,7 @@ gapminder %>%
   filter(country=="India" | country == "Nepal")
 ```
 
-
-:::{.fragment}
+::: fragment
 ::: {style="font-size: 0.45em"}
 ```{r}
 #| echo: false
@@ -166,6 +154,7 @@ knitr::kable(gapminder %>%
 :::
 
 ## `filter()`{.smaller}
+
 Using `%>%` to match more than one value
 
 ```{r}
@@ -175,8 +164,7 @@ gapminder %>%
   filter(year %in% c(1952,1962, 1972 ))
 ```
 
-
-:::{.fragment}
+::: fragment
 ::: {style="font-size: 0.75em"}
 ```{r}
 #| echo: false
@@ -187,12 +175,11 @@ knitr::kable(gapminder %>%
 :::
 :::
 
-
 ## `arrange()`
 
 Arrange rows in asending order by default
 
-:::{.fragment}
+::: fragment
 ```{r}
 #| echo: true
 #| eval: false
@@ -202,7 +189,7 @@ gapminder %>%
 ```
 :::
 
-:::{.fragment}
+::: fragment
 ::: {style="font-size: 0.75em"}
 ```{r}
 #| echo: false
@@ -214,12 +201,11 @@ knitr::kable(gapminder %>%
 :::
 :::
 
-
 ## `arrange()`
 
 Arrange rows in descening order using `desc`
 
-:::{.fragment}
+::: fragment
 ```{r}
 #| echo: true
 #| eval: false
@@ -229,7 +215,7 @@ gapminder %>%
 ```
 :::
 
-:::{.fragment}
+::: fragment
 ::: {style="font-size: 0.75em"}
 ```{r}
 #| echo: false
@@ -242,25 +228,26 @@ knitr::kable(gapminder %>%
 :::
 
 ## Quiz
-::: {.nonincremental}
+
+::: nonincremental
 Select the code to arrange population (`pop`) in descening order
 
-a) gapminder %>% filter(pop)
+a)  gapminder %\>% filter(pop)
 
 ::: {.fragment .highlight-red}
-b) gapminder %>% arrange(desc(pop))
+b)  gapminder %\>% arrange(desc(pop))
 :::
-c) gapminder %>% arrange(pop)  
 
+c)  gapminder %\>% arrange(pop)
 
-d) gapminder %>% arrange(year)
+d)  gapminder %\>% arrange(year)
 :::
 
 ## `select()`
 
 Select variables or columns of interest
 
-:::{.fragment}
+::: fragment
 ```{r}
 #| echo: true
 #| eval: false
@@ -269,7 +256,7 @@ gapminder %>%
 ```
 :::
 
-:::{.fragment}
+::: fragment
 ::: {style="font-size: 0.75em"}
 ```{r}
 #| echo: false
@@ -284,7 +271,7 @@ knitr::kable(gapminder %>%
 
 Drop variables using `-`
 
-:::{.fragment}
+::: fragment
 ```{r}
 #| echo: true
 #| eval: false
@@ -293,7 +280,7 @@ gapminder %>%
 ```
 :::
 
-:::{.fragment}
+::: fragment
 ::: {style="font-size: 0.75em"}
 ```{r}
 #| echo: false
@@ -308,23 +295,21 @@ knitr::kable(gapminder %>%
 
 There are a number of helper functions you can use within select():
 
-- starts_with("abc"): matches names that begin with “abc”
+-   starts_with("abc"): matches names that begin with "abc"
 
-- ends_with("xyz"): matches names that end with “xyz”
+-   ends_with("xyz"): matches names that end with "xyz"
 
-- contains("ijk"): matches names that contain “ijk”
+-   contains("ijk"): matches names that contain "ijk"
 
-- matches("(.)\\1"): selects variables that match a regular expression
+-   matches("(.)\\1"): selects variables that match a regular expression
 
-- num_range("x", 1:3): matches x1, x2 and x3
-
+-   num_range("x", 1:3): matches x1, x2 and x3
 
 ## `mutate()`
 
 Adds new variable at the end of your dataset
 
-:::{.fragment}
-
+::: fragment
 ```{r}
 #| echo: true
 #| eval: false
@@ -335,7 +320,7 @@ gapminder %>%
 ```
 :::
 
-:::{.fragment}
+::: fragment
 ::: {style="font-size: 0.75em"}
 ```{r}
 #| echo: false
@@ -347,20 +332,21 @@ knitr::kable(gapminder %>%
 :::
 :::
 
-
 ## `mutate()`
 
 Some of the ways that you can create new variables
 
-- Arithmetic operators: `+`, `-`, `*`, `/`, `^`
-- Modular arithmetic: `%/%` (integer division) and `%%` (remainder)
-- Logs: `log()`, `log2()`, `log10()`, etc.
-- Offsets: `lead()` and `lag()`
-- Logical comparisons: `<`, `<=`, `>`, `>=`, `!=`, and `==`
-- Ranking eg. `min_rank()`
+-   Arithmetic operators: `+`, `-`, `*`, `/`, `^`
+-   Modular arithmetic: `%/%` (integer division) and `%%` (remainder)
+-   Logs: `log()`, `log2()`, `log10()`, etc.
+-   Offsets: `lead()` and `lag()`
+-   Logical comparisons: `<`, `<=`, `>`, `>=`, `!=`, and `==`
+-   Ranking eg. `min_rank()`
 
 ## `mutate()`
+
 Example
+
 ```{r}
 #| echo: true
 #| eval: false
@@ -371,7 +357,7 @@ gapminder %>%
   
 ```
 
-:::{.fragment}
+::: fragment
 ::: {style="font-size: 0.75em"}
 ```{r}
 #| echo: false
@@ -388,8 +374,7 @@ knitr::kable(gapminder %>%
 
 If you only want to keep the new variable use `transmute()`
 
-:::{.fragment}
-
+::: fragment
 ```{r}
 #| echo: true
 #| eval: false
@@ -400,7 +385,7 @@ gapminder %>%
 ```
 :::
 
-:::{.fragment}
+::: fragment
 ::: {style="font-size: 0.75em"}
 ```{r}
 #| echo: false
@@ -412,19 +397,80 @@ knitr::kable(gapminder %>%
 :::
 :::
 
-## `summarise()`
+## `summarise()` {.smaller}
 
-Collapse data frame to a single row
 
-## `groupby()`
 
-ungroup
+:::: {.columns}
+collapse data frame to a single summary
+
+::: {.column width="45%"}
+```{r}
+gapminder %>% 
+  summarise(mean_lifeExp = mean(lifeExp))
+```
+:::
+
+::: {.column width="5%"}
+
+:::
+
+
+::: {.column width="50%"}
+::: {.fragment}
+
+Often used with `groupby()` to summarise by groups
+
+```{r}
+gapminder %>% 
+  group_by(continent) %>% 
+  summarise(mean_lifeExp = mean(lifeExp))
+```
+:::
+:::
+
+::::
 
 ## Useful summary functions
 
+- `mean()`, `median()`
+- `sd()`, `IQR()`
+- `min()`, `max()`
+- `n()`
 
-## Using the pipe 
+## Counts
 
+```{r}
+gapminder %>% 
+  count(continent)
+```
+::: {.fragment}
+```{r}
+gapminder %>% 
+  group_by(continent) %>% 
+  summarise(observations = n())
+```
+:::
 
+## Using the pipe `%>%`
 
+- simplifies your code
+- improves readability
 
+. . .
+
+`filter(gapminder, country == "India")`
+
+is same as
+
+`gapminder %>% filter(country == "India")`
+
+. . .
+
+[Memory tip: `%>%` can be read as "and, then"]{style="color:#D0541B"}
+
+## Resources
+::: nonincremental
+- R for Data Science [Chapter 5](https://r4ds.had.co.nz/transform.html#ungrouping)
+ - Slides made using [Quarto](https://meghan.rbind.io/blog/quarto-slides/#quarto-resources)
+::: 

@@ -1446,19 +1446,110 @@
 </div>
 </div>
 </section>
-<section id="summarise" class="slide level2">
+<section id="summarise" class="slide level2 smaller">
 <h2><code>summarise()</code></h2>
-<p>Collapse data frame to a single row</p>
-</section>
-<section id="groupby" class="slide level2">
-<h2><code>groupby()</code></h2>
-<p>ungroup</p>
+<div class="columns">
+<p>collapse data frame to a single summary</p><div class="column" style="width:45%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-26_efc8538fa4ee8a2ebdca423e8e7a3c53">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">summarise</span>(<span class="at">mean_lifeExp =</span> <span class="fu">mean</span>(lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  mean_lifeExp
+         &lt;dbl&gt;
+1         59.5</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p>Often used with <code>groupby()</code> to summarise by groups</p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-27_4b27c90348775bd330a4cbe5dcac1c4c">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">summarise</span>(<span class="at">mean_lifeExp =</span> <span class="fu">mean</span>(lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  continent mean_lifeExp
+  &lt;fct&gt;            &lt;dbl&gt;
+1 Africa            48.9
+2 Americas          64.7
+3 Asia              60.1
+4 Europe            71.9
+5 Oceania           74.3</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="useful-summary-functions" class="slide level2">
 <h2>Useful summary functions</h2>
+<ul>
+<li class="fragment"><code>mean()</code>, <code>median()</code></li>
+<li class="fragment"><code>sd()</code>, <code>IQR()</code></li>
+<li class="fragment"><code>min()</code>, <code>max()</code></li>
+<li class="fragment"><code>n()</code></li>
+</ul>
+</section>
+<section id="counts" class="slide level2">
+<h2>Counts</h2>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-28_849b6e449e8af382721a5a4943cd127a">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">count</span>(continent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  continent     n
+  &lt;fct&gt;     &lt;int&gt;
+1 Africa      624
+2 Americas    300
+3 Asia        396
+4 Europe      360
+5 Oceania      24</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-29_860c1596b6137ca09709e65848538d7a">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">summarise</span>(<span class="at">observations =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  continent observations
+  &lt;fct&gt;            &lt;int&gt;
+1 Africa             624
+2 Americas           300
+3 Asia               396
+4 Europe             360
+5 Oceania             24</code></pre>
+</div>
+</div>
+</div>
 </section>
 <section id="using-the-pipe" class="slide level2">
-<h2>Using the pipe</h2>
+<h2>Using the pipe <code>%&gt;%</code></h2>
+<ul>
+<li class="fragment">simplifies your code</li>
+<li class="fragment">improves readability</li>
+</ul>
+<div class="fragment">
+<p><code>filter(gapminder, country == "India")</code></p>
+<p>is same as</p>
+<p><code>gapminder %&gt;% filter(country == "India")</code></p>
+</div>
+<div class="fragment">
+<p><span style="color:#D0541B">Memory tip: <code>%&gt;%</code> can be read as “and, then”</span></p>
+</div>
+</section>
+<section id="resources" class="slide level2">
+<h2>Resources</h2>
+<div>
+<ul>
+<li>R for Data Science <a href="https://r4ds.had.co.nz/transform.html#ungrouping">Chapter 5</a></li>
+<li>Slides made using <a href="https://meghan.rbind.io/blog/quarto-slides/#quarto-resources">Quarto</a></li>
+</ul>
+</div>
 <div class="footer footer-default">
 
 </div>
