@@ -395,6 +395,65 @@
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(gapminder) <span class="co"># data set</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+<section id="recap" class="slide level2">
+<h2>Recap</h2>
+<p>Common errors when reading file</p>
+<ul>
+<li class="fragment">not loading correct package</li>
+<li class="fragment">not attaching .csv extension</li>
+<li class="fragment">using wrong case</li>
+<li class="fragment">not using quotes <code>""</code> around file name</li>
+</ul>
+</section>
+<section id="recap---here-package-.background-color-white" class="slide level2">
+<h2>Recap - <code>here</code> package {.background-color = “white”}</h2>
+
+<img data-src="img/here.png" class="r-stretch"></section>
+<section id="recap---here-package" class="slide level2">
+<h2>Recap - <code>here</code> package</h2>
+<p>Type <code>here()</code> in your console. What do you see?</p>
+<div class="fragment">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-2_4dcfd6f3e540ca5557588fa87fa1413f">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">here</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "/Users/meenakshikushwaha/Dropbox/R projects/github/data_wrangling_quarto"</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><img data-src="img/here.png"></p>
+</div>
+</section>
+<section id="recap---here-package-1" class="slide level2">
+<h2>Recap - <code>here</code> package</h2>
+<p><code>here</code> tells R where your file is</p>
+<p>If your data is in the main directory where <code>here()</code> begins</p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-3_dea21dc519e57a9b3b9e6fddea58e039">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"my_file.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you are data is inside a folder</p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-4_6125c9191acf07c8e296bb0a5ef5bb11">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"my_file.csv"</span>))<span class="st">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you are data is deep inside a subfolder</p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-5_03be2720277e3ed2f439d80609ff348d">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"sub_folder"</span>, <span class="st">"my_file.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="fragment strike">
+<p>Why not just use <code>setwd()</code></p>
+</div>
+</div>
+<div class="fragment">
+<div class="fragment highlight-blue">
+<p>Using <code>here()</code> makes your code more robust and shareable</p>
+</div>
+</div>
+</section>
+<section id="demo" class="slide level2" style="font-size: 2em; text-align: middle, center ">
+<h2>Demo</h2>
+</section>
 <section id="what-is-tidyverse" class="slide level2">
 <h2>What is <code>tidyverse</code></h2>
 <div class="columns">
@@ -435,7 +494,7 @@
 </div><div class="column" style="width:13%;">
 
 </div><div class="column" style="width:62%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-2_9e1b6b26ea8aa7d1c05e53642483c523">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-6_09c1ada34c83ec0ab8964989d5e21fe0">
 <div class="cell-output-display">
 <table>
 <thead>
@@ -509,8 +568,8 @@
 </section>
 <section id="gapminder-dataset-1" class="slide level2">
 <h2>Gapminder dataset</h2>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-3_d4f4255bac953ab9c424f58d577b1899">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">head</span>(gapminder, <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-7_d1e55b1f67af110614e805aeeb09a775">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">head</span>(gapminder, <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 15 × 6
    country     continent  year lifeExp      pop gdpPercap
@@ -536,12 +595,12 @@
 <section id="filter" class="slide level2">
 <h2><code>filter()</code></h2>
 <p>Keep or discard observations that satisfy certain condition</p>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-4_efe26aba460737cd3791ae4b82dc1524">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"India"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-8_7489ccf1caceba4e06a0881423be4bc3">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"India"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-5_2f70375fbb490d5f37fd7564bc1cd840">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-9_abb9aa58ed66bb8a07de17ee6130ed39">
 <div class="cell-output-display">
 <table>
 <thead>
@@ -611,13 +670,13 @@
 </section>
 <section id="filter-1" class="slide level2">
 <h2><code>filter()</code></h2>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-6_1592d83301b39d172feee5a217328e72">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"India"</span>, year <span class="sc">&lt;</span> <span class="dv">1975</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-10_e60255d8fd0d4e59fe80061121720df0">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"India"</span>, year <span class="sc">&lt;</span> <span class="dv">1975</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <div style="font-size: 0.75em">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-7_77d436628539b07b30acc7cb28fcdc84">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-11_eb159a26ef6ddae59d0de98fc57a69ca">
 <div class="cell-output-display">
 <table>
 <thead>
@@ -699,13 +758,13 @@
 <section id="filter-2" class="slide level2">
 <h2><code class="smaller">filter()</code></h2>
 <p>the <code>|</code> operator signifies “or”</p>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-8_abf923ea99813a00c48ecba36f175636">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">filter</span>(country<span class="sc">==</span><span class="st">"India"</span> <span class="sc">|</span> country <span class="sc">==</span> <span class="st">"Nepal"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-12_4a858ad5fb7d09b7c34a028fa493a981">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">filter</span>(country<span class="sc">==</span><span class="st">"India"</span> <span class="sc">|</span> country <span class="sc">==</span> <span class="st">"Nepal"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <div style="font-size: 0.45em">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-9_5d1846a524c80f794c86bb171e7cccc5">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-13_19c527140a96ac1a21c60a89fd3425bb">
 <div class="cell-output-display">
 <table>
 <thead>
@@ -841,13 +900,13 @@
 <section id="filter-3" class="slide level2">
 <h2><code class="smaller">filter()</code></h2>
 <p>Using <code>%&gt;%</code> to match more than one value</p>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-10_bbb743f4cabbea5b4647b35af2550228">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1952</span>,<span class="dv">1962</span>, <span class="dv">1972</span> ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-14_1c5e4d19b5d2cffcc81f902b88f63e43">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1952</span>,<span class="dv">1962</span>, <span class="dv">1972</span> ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <div style="font-size: 0.75em">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-11_6c68858e1c4c06c00d1621c9c3f77d1f">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-15_10a9ab763f76f2e2bc575f78b3840415">
 <div class="cell-output-display">
 <table>
 <thead>
@@ -936,15 +995,15 @@
 <h2><code>arrange()</code></h2>
 <p>Arrange rows in asending order by default</p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-12_f781f350e03850a62c121f3746e4ef48">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1952</span>,<span class="dv">1962</span>, <span class="dv">1972</span> )) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">arrange</span>(year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-16_c4d07d3d24b9bd8a769dc5b63140c940">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1952</span>,<span class="dv">1962</span>, <span class="dv">1972</span> )) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">arrange</span>(year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
 <div style="font-size: 0.75em">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-13_063a457565f5f40479b3f7a1e54a11df">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-17_ece6c75425dd6a3ef2d86135be87bfd7">
 <div class="cell-output-display">
 <table>
 <thead>
@@ -1017,15 +1076,15 @@
 <h2><code>arrange()</code></h2>
 <p>Arrange rows in descening order using <code>desc</code></p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-14_e56fc294a1c56d8cc4fb5614542fc946">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1952</span>,<span class="dv">1962</span>, <span class="dv">1972</span> )) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(year))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-18_62259e765eb366463790a46351a29823">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1952</span>,<span class="dv">1962</span>, <span class="dv">1972</span> )) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(year))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
 <div style="font-size: 0.75em">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-15_6a096028ad0cf6719ea0a309ebc2d4c4">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-19_bd5404995cc99c8c4b6c440a34310227">
 <div class="cell-output-display">
 <table>
 <thead>
@@ -1116,14 +1175,14 @@
 <h2><code>select()</code></h2>
 <p>Select variables or columns of interest</p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-16_c116de4c35815d6abdb067b6bbc2196c">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">select</span>(country, year, pop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-20_ae734f5d4f04e2539577eee5cdd88c64">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">select</span>(country, year, pop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
 <div style="font-size: 0.75em">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-17_8bbdfb7adb533acaed0a3321ddbf060e">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-21_fe4cd18e6c4061d7dbe986f327183105">
 <div class="cell-output-display">
 <table>
 <thead>
@@ -1175,14 +1234,14 @@
 <h2><code>select()</code></h2>
 <p>Drop variables using <code>-</code></p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-18_11848631fcee1138f9d391f8d57dde05">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">select</span>(<span class="sc">-</span>pop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-22_738a0c5ed6bc8b804e5cfaa3a99041d0">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">select</span>(<span class="sc">-</span>pop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
 <div style="font-size: 0.75em">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-19_b82cdce7a6056e3e58505238cb01cca8">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-23_f372328523e5f117ad797147f14360cb">
 <div class="cell-output-display">
 <table>
 <thead>
@@ -1259,15 +1318,15 @@
 <h2><code>mutate()</code></h2>
 <p>Adds new variable at the end of your dataset</p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-20_b3f43e3930a86932bedbcd730f107e9f">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">select</span>(country, pop) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">mutate</span>(<span class="at">pop_mil =</span> <span class="fu">round</span>(pop<span class="sc">/</span><span class="dv">1000000</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-24_bc652ba27f811d591603d75bfd825137">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">select</span>(country, pop) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">mutate</span>(<span class="at">pop_mil =</span> <span class="fu">round</span>(pop<span class="sc">/</span><span class="dv">1000000</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
 <div style="font-size: 0.75em">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-21_3c705479de67cc0ecde61e8b9974774d">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-25_39cb37a94f3b5fffa4adbae5661f46b0">
 <div class="cell-output-display">
 <table>
 <thead>
@@ -1330,15 +1389,15 @@
 <section id="mutate-2" class="slide level2">
 <h2><code>mutate()</code></h2>
 <p>Example</p>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-22_99fd736eac161c42a3a82033f6e761a2">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">select</span>(country, year, pop) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">mutate</span>(<span class="at">pop_rank =</span> <span class="fu">min_rank</span>(pop)) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">arrange</span>(pop_rank)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-26_932d1957df6dacdc9a1a72c5161f654f">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">select</span>(country, year, pop) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">mutate</span>(<span class="at">pop_rank =</span> <span class="fu">min_rank</span>(pop)) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-4"><a href="#cb18-4"></a>  <span class="fu">arrange</span>(pop_rank)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <div style="font-size: 0.75em">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-23_c9d5ab215e38cf1ee9340c6cc5d2f3b5">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-27_a1d8e59bd483b11ab3e72d144dddc1f6">
 <div class="cell-output-display">
 <table>
 <thead>
@@ -1397,15 +1456,15 @@
 <h2><code>transmute</code>()</h2>
 <p>If you only want to keep the new variable use <code>transmute()</code></p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-24_ba828c5302bff649889d58faebd96c2d">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">select</span>(country, pop) <span class="sc">%&gt;%</span> </span>
-<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">mutate</span>(<span class="at">pop =</span> <span class="fu">round</span>(pop<span class="sc">/</span><span class="dv">1000000</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-28_8659f3e5f2ff4c27eedf310e446d3839">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">select</span>(country, pop) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">mutate</span>(<span class="at">pop =</span> <span class="fu">round</span>(pop<span class="sc">/</span><span class="dv">1000000</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
 <div style="font-size: 0.75em">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-25_2bb93031286ddd876d27aa0554fb29fc">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-29_18eee8e5fffb22c9899ef2526e76ded0">
 <div class="cell-output-display">
 <table>
 <thead>
@@ -1450,9 +1509,9 @@
 <h2><code>summarise()</code></h2>
 <div class="columns">
 <p>collapse data frame to a single summary</p><div class="column" style="width:45%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-26_efc8538fa4ee8a2ebdca423e8e7a3c53">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">summarise</span>(<span class="at">mean_lifeExp =</span> <span class="fu">mean</span>(lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-30_861e4f36cb37d0cc5511cedb7ed667d1">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">summarise</span>(<span class="at">mean_lifeExp =</span> <span class="fu">mean</span>(lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   mean_lifeExp
@@ -1465,10 +1524,10 @@
 </div><div class="column" style="width:50%;">
 <div class="fragment">
 <p>Often used with <code>groupby()</code> to summarise by groups</p>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-27_4b27c90348775bd330a4cbe5dcac1c4c">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">summarise</span>(<span class="at">mean_lifeExp =</span> <span class="fu">mean</span>(lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-31_de6f3e194a2904536b150fdbbd815053">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">summarise</span>(<span class="at">mean_lifeExp =</span> <span class="fu">mean</span>(lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
   continent mean_lifeExp
@@ -1495,9 +1554,9 @@
 </section>
 <section id="counts" class="slide level2">
 <h2>Counts</h2>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-28_849b6e449e8af382721a5a4943cd127a">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">count</span>(continent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-32_f5df3d7180ffefdfcbafff53a876ec7e">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">count</span>(continent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
   continent     n
@@ -1510,10 +1569,10 @@
 </div>
 </div>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-29_860c1596b6137ca09709e65848538d7a">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">summarise</span>(<span class="at">observations =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-33_5ed4e589f117cb4e3ab5eb975de0a4f3">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">summarise</span>(<span class="at">observations =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
   continent observations

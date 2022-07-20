@@ -19,6 +19,73 @@ library(tidyverse) # today's package
 library(gapminder) # data set
 ```
 
+## Recap
+
+Common errors when reading file
+
+-   not loading correct package
+-   not attaching .csv extension
+-   using wrong case
+-   not using quotes `""` around file name
+
+## Recap - `here` package {.background-color = "white"}
+![](img/here.png)
+
+## Recap - `here` package
+
+Type `here()` in your console. What do you see?
+
+. . . 
+
+```{r}
+here()
+```
+
+. . .
+
+![](img/here.png)
+
+
+
+## Recap - `here` package
+
+`here` tells R where your file is 
+
+If your data is in the main directory where `here()` begins
+```{r}
+#| eval: false
+my_data <- read_csv(here("my_file.csv"))
+```
+If you are data is inside a folder 
+```{r}
+#| eval: false
+my_data <- read_csv(here("data", "my_file.csv"))`
+```
+If you are data is deep inside a subfolder
+```{r}
+#| eval: false
+my_data <- read_csv(here("data", "sub_folder", "my_file.csv"))
+```
+
+</br>
+
+
+
+. . .
+
+::: {.fragment .strike}
+Why not just use `setwd()`
+:::
+
+. . .
+
+::: {.fragment .highlight-blue}
+Using `here()` makes your code more robust and shareable
+:::
+
+## Demo {style="font-size: 2em; text-align: middle, center "}
+
+
 ## What is `tidyverse`
 
 ::: columns
@@ -399,9 +466,7 @@ knitr::kable(gapminder %>%
 
 ## `summarise()` {.smaller}
 
-
-
-:::: {.columns}
+::: columns
 collapse data frame to a single summary
 
 ::: {.column width="45%"}
@@ -412,13 +477,10 @@ gapminder %>%
 :::
 
 ::: {.column width="5%"}
-
 :::
 
-
 ::: {.column width="50%"}
-::: {.fragment}
-
+::: fragment
 Often used with `groupby()` to summarise by groups
 
 ```{r}
@@ -428,15 +490,14 @@ gapminder %>%
 ```
 :::
 :::
-
-::::
+:::
 
 ## Useful summary functions
 
-- `mean()`, `median()`
-- `sd()`, `IQR()`
-- `min()`, `max()`
-- `n()`
+-   `mean()`, `median()`
+-   `sd()`, `IQR()`
+-   `min()`, `max()`
+-   `n()`
 
 ## Counts
 
@@ -444,7 +505,8 @@ gapminder %>%
 gapminder %>% 
   count(continent)
 ```
-::: {.fragment}
+
+::: fragment
 ```{r}
 gapminder %>% 
   group_by(continent) %>% 
@@ -454,8 +516,8 @@ gapminder %>%
 
 ## Using the pipe `%>%`
 
-- simplifies your code
-- improves readability
+-   simplifies your code
+-   improves readability
 
 . . .
 
@@ -470,7 +532,8 @@ is same as
 [Memory tip: `%>%` can be read as "and, then"]{style="color:#D0541B"}
 
 ## Resources
+
 ::: nonincremental
-- R for Data Science [Chapter 5](https://r4ds.had.co.nz/transform.html#ungrouping)
- - Slides made using [Quarto](https://meghan.rbind.io/blog/quarto-slides/#quarto-resources)
-::: 
+-   R for Data Science [Chapter 5](https://r4ds.had.co.nz/transform.html#ungrouping)
+-   Slides made using [Quarto](https://meghan.rbind.io/blog/quarto-slides/#quarto-resources)
+:::
