@@ -28,9 +28,6 @@ Common errors when reading file
 -   using wrong case
 -   not using quotes `""` around file name
 
-## Recap - `here` package {.background-color = "white"}
-![](img/here.png)
-
 ## Recap - `here` package
 
 Type `here()` in your console. What do you see?
@@ -145,6 +142,10 @@ Learn more: [Gapminder](https://www.gapminder.org/data/documentation/)
 ```{r}
 head(gapminder, 15)
 ```
+
+##
+![](img/dplyr_filter.jpeg)
+
 
 ## `filter()`
 
@@ -372,6 +373,10 @@ There are a number of helper functions you can use within select():
 
 -   num_range("x", 1:3): matches x1, x2 and x3
 
+##
+
+![](img/dplyr_mutate.png)
+
 ## `mutate()`
 
 Adds new variable at the end of your dataset
@@ -437,6 +442,89 @@ knitr::kable(gapminder %>%
 :::
 :::
 
+## Using `mutate()` with a condition
+
+Make a new variable with numeric code for each continent
+
+```{r}
+#| eval: false
+gapminder %>% 
+  select (country, continent, year, pop) %>% 
+  mutate(cont_code = ifelse(continent == "Africa", 1, 
+                            ifelse(continent == "Americas", 2,
+                                   ifelse(continent == "Asia", 3,
+                                          ifelse(continent == "Europe", 4, 5)))))
+```
+
+::: fragment
+::: {style="font-size: 0.75em"}
+```{r}
+#| echo: false
+knitr::kable(gapminder %>% 
+  select (country, continent, year, pop) %>% 
+  mutate(cont_code = ifelse(continent == "Africa", 1, 
+                            ifelse(continent == "Americas", 2,
+                                   ifelse(continent == "Asia", 3,
+                                          ifelse(continent == "Europe", 4, 5))))) %>% 
+    head())
+```
+:::
+:::
+
+## `case_when()`
+
+![](img/dplyr_case_when.png)
+
+## Using `case_when()` with `mutate()`
+
+```{r}
+#| eval: false
+gapminder %>% 
+  select (country, continent, year, pop) %>% 
+  mutate(cont_code = case_when(continent == "Africa" ~ 1,
+                               continent == "Americas" ~ 2,
+                               continent == "Asia" ~ 3,
+                               continent == "Europe" ~ 4,
+                               TRUE ~ 5))
+```
+
+::: fragment
+::: {style="font-size: 0.75em"}
+```{r}
+#| echo: false
+knitr::kable(gapminder %>% 
+  select (country, continent, year, pop) %>% 
+  mutate(cont_code = case_when(continent == "Africa" ~ 1,
+                               continent == "Americas" ~ 2,
+                               continent == "Asia" ~ 3,
+                               continent == "Europe" ~ 4,
+                               TRUE ~ 5)) %>% 
+    head())
+```
+:::
+:::
+
+## Using `case_when()` with `mutate()`
+
+![](img/case_when.webp)
+
+. . .
+```{r}
+#| eval: false
+gapminder %>% 
+  select (country, continent, year, pop) %>% 
+  mutate(cont_code = case_when(continent == "Africa" ~ 1,
+                               continent == "Americas" ~ 2,
+                               continent == "Asia" ~ 3,
+                               continent == "Europe" ~ 4,
+                               TRUE ~ 5))
+```
+
+:::{.footer}
+[Source](https://www.sharpsightlabs.com/blog/case-when-r/)
+:::
+
+
 ## `transmute`()
 
 If you only want to keep the new variable use `transmute()`
@@ -465,31 +553,49 @@ knitr::kable(gapminder %>%
 :::
 
 ## `summarise()` {.smaller}
+### collapse data frame to a single summary
 
 ::: columns
-collapse data frame to a single summary
-
 ::: {.column width="45%"}
 ```{r}
+#| eval: false
 gapminder %>% 
   summarise(mean_lifeExp = mean(lifeExp))
 ```
+
+```{r}
+#| echo: false
+knitr::kable(gapminder %>% 
+  summarise(mean_lifeExp = mean(lifeExp)))
+```
+
 :::
 
 ::: {.column width="5%"}
+
 :::
 
 ::: {.column width="50%"}
-::: fragment
+
 Often used with `groupby()` to summarise by groups
 
 ```{r}
+#| eval: false
 gapminder %>% 
   group_by(continent) %>% 
   summarise(mean_lifeExp = mean(lifeExp))
 ```
+
+```{r}
+#| echo: false
+knitr::kable(gapminder %>% 
+  group_by(continent) %>% 
+  summarise(mean_lifeExp = mean(lifeExp)))
+```
+
+
 :::
-:::
+
 :::
 
 ## Useful summary functions
@@ -500,20 +606,44 @@ gapminder %>%
 -   `n()`
 
 ## Counts
+### Count number of observations in each group
 
+::: columns
+::: {.column width="45%"}
 ```{r}
+#| eval: false
 gapminder %>% 
   count(continent)
 ```
 
-::: fragment
 ```{r}
+#| echo: false
+knitr::kable(gapminder %>% 
+  count(continent))
+```
+:::
+
+::: {.column width="5%"}
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| eval: false
 gapminder %>% 
   group_by(continent) %>% 
   summarise(observations = n())
 ```
-:::
 
+```{r}
+#| echo: false
+knitr::kable(gapminder %>% 
+  group_by(continent) %>% 
+  summarise(observations = n()))
+```
+:::
+:::
 ## Using the pipe `%>%`
 
 -   simplifies your code
@@ -536,4 +666,5 @@ is same as
 ::: nonincremental
 -   R for Data Science [Chapter 5](https://r4ds.had.co.nz/transform.html#ungrouping)
 -   Slides made using [Quarto](https://meghan.rbind.io/blog/quarto-slides/#quarto-resources)
+- Art work by [Allison Horst](https://github.com/allisonhorst/stats-illustrations)
 :::
