@@ -32,7 +32,7 @@ Common errors when reading file
 
 Type `here()` in your console. What do you see?
 
-. . . 
+. . .
 
 ```{r}
 here()
@@ -42,31 +42,32 @@ here()
 
 ![](img/here.png)
 
-
-
 ## Recap - `here` package
 
-`here` tells R where your file is 
+`here` tells R where your file is
 
 If your data is in the main directory where `here()` begins
+
 ```{r}
 #| eval: false
 my_data <- read_csv(here("my_file.csv"))
 ```
-If you are data is inside a folder 
+
+If you are data is inside a folder
+
 ```{r}
 #| eval: false
 my_data <- read_csv(here("data", "my_file.csv"))`
 ```
+
 If you are data is deep inside a subfolder
+
 ```{r}
 #| eval: false
 my_data <- read_csv(here("data", "sub_folder", "my_file.csv"))
 ```
 
 </br>
-
-
 
 . . .
 
@@ -81,7 +82,6 @@ Using `here()` makes your code more robust and shareable
 :::
 
 ## Demo {style="font-size: 2em; text-align: middle, center "}
-
 
 ## What is `tidyverse`
 
@@ -143,9 +143,9 @@ Learn more: [Gapminder](https://www.gapminder.org/data/documentation/)
 head(gapminder, 15)
 ```
 
-##
-![](img/dplyr_filter.jpeg)
+## 
 
+![](img/dplyr_filter.jpeg)
 
 ## `filter()`
 
@@ -183,20 +183,42 @@ knitr::kable(filter(gapminder, country == "India", year<1975))
 :::
 :::
 
+## Using the pipe `%>%`
+
+-   simplifies your code
+-   improves readability
+
+. . .
+
+`filter(gapminder, country == "India")`
+
+is same as
+
+`gapminder %>% filter(country == "India")`
+
+. . .
+
+[Memory tip: `%>%` can be read as "and, then"]{style="color:#D0541B"}
+
+. . .
+
+*Keyboard shortcut*
+Ctrl/Cmd + Shift + M
+
 ## Quiz
 
 ::: nonincremental
-How would you filter data from all asian countries that have life expectancy (`lifeExp`) of 80 or higher?
+How would you filter data from all asian countries that have life expectancy (`lifeExp`) higher than 80?
 
 a)  gapminder %\>% filter(continent = "Asia", lifeExp\>"80")
 
 b)  gapminder %\>% filter(continent = "Asia", lifeExp\>80)
 
-::: {.fragment .highlight-red}
 c)  gapminder %\>% filter(continent == Asia, lifeExp\>80)
-:::
 
+::: {.fragment .highlight-red}
 d)  gapminder %\>% filter(continent == "Asia", lifeExp\>80)
+:::
 :::
 
 ## `filter()`{.smaller}
@@ -373,7 +395,7 @@ There are a number of helper functions you can use within select():
 
 -   num_range("x", 1:3): matches x1, x2 and x3
 
-##
+## 
 
 ![](img/dplyr_mutate.png)
 
@@ -442,7 +464,31 @@ knitr::kable(gapminder %>%
 :::
 :::
 
+## Quiz
+
+What does the following code do?
+
+```{r}
+#| eval: false
+gapminder %>% 
+select(country, year, pop) %>% 
+  mutate(pop_lakh = pop/100000)
+```
+
+::: {.nonincremental}
+a) Remove `country`, `year` and `pop` 
+
+b) Add new variables `country`, `year` , `pop`, and `pop_lakh` to the dataset
+
+:::{.fragment .highlight-red}
+c) select `country`, `year` and `pop` from the dataset and add a new variable `pop_lakh`
+:::
+
+d) All of the above
+
+:::
 ## Using `mutate()` with a condition
+
 
 Make a new variable with numeric code for each continent
 
@@ -509,6 +555,7 @@ knitr::kable(gapminder %>%
 ![](img/case_when.webp)
 
 . . .
+
 ```{r}
 #| eval: false
 gapminder %>% 
@@ -520,10 +567,9 @@ gapminder %>%
                                TRUE ~ 5))
 ```
 
-:::{.footer}
+::: footer
 [Source](https://www.sharpsightlabs.com/blog/case-when-r/)
 :::
-
 
 ## `transmute`()
 
@@ -553,6 +599,7 @@ knitr::kable(gapminder %>%
 :::
 
 ## `summarise()` {.smaller}
+
 ### collapse data frame to a single summary
 
 ::: columns
@@ -568,15 +615,12 @@ gapminder %>%
 knitr::kable(gapminder %>% 
   summarise(mean_lifeExp = mean(lifeExp)))
 ```
-
 :::
 
 ::: {.column width="5%"}
-
 :::
 
 ::: {.column width="50%"}
-
 Often used with `groupby()` to summarise by groups
 
 ```{r}
@@ -592,10 +636,7 @@ knitr::kable(gapminder %>%
   group_by(continent) %>% 
   summarise(mean_lifeExp = mean(lifeExp)))
 ```
-
-
 :::
-
 :::
 
 ## Useful summary functions
@@ -606,6 +647,7 @@ knitr::kable(gapminder %>%
 -   `n()`
 
 ## Counts
+
 ### Count number of observations in each group
 
 ::: columns
@@ -624,11 +666,9 @@ knitr::kable(gapminder %>%
 :::
 
 ::: {.column width="5%"}
-
 :::
 
 ::: {.column width="50%"}
-
 ```{r}
 #| eval: false
 gapminder %>% 
@@ -644,27 +684,11 @@ knitr::kable(gapminder %>%
 ```
 :::
 :::
-## Using the pipe `%>%`
-
--   simplifies your code
--   improves readability
-
-. . .
-
-`filter(gapminder, country == "India")`
-
-is same as
-
-`gapminder %>% filter(country == "India")`
-
-. . .
-
-[Memory tip: `%>%` can be read as "and, then"]{style="color:#D0541B"}
 
 ## Resources
 
 ::: nonincremental
 -   R for Data Science [Chapter 5](https://r4ds.had.co.nz/transform.html#ungrouping)
 -   Slides made using [Quarto](https://meghan.rbind.io/blog/quarto-slides/#quarto-resources)
-- Art work by [Allison Horst](https://github.com/allisonhorst/stats-illustrations)
+-   Art work by [Allison Horst](https://github.com/allisonhorst/stats-illustrations)
 :::
