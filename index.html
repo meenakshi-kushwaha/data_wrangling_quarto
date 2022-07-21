@@ -915,7 +915,7 @@
 </section>
 <section id="filter-3" class="slide level2">
 <h2><code class="smaller">filter()</code></h2>
-<p>Using <code>%&gt;%</code> to match more than one value</p>
+<p>Using <code>%in%</code> to match more than one value</p>
 <div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-14_1c5e4d19b5d2cffcc81f902b88f63e43">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
 <span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1952</span>,<span class="dv">1962</span>, <span class="dv">1972</span> ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1667,69 +1667,16 @@
 </div>
 </div>
 </section>
-<section id="transmute" class="slide level2">
-<h2><code>transmute</code>()</h2>
-<p>If you only want to keep the new variable use <code>transmute()</code></p>
-<div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-34_71c9c240bf001403423191078c7ecf87">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">select</span>(country, pop) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">mutate</span>(<span class="at">pop =</span> <span class="fu">round</span>(pop<span class="sc">/</span><span class="dv">1000000</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div class="fragment">
-<div style="font-size: 0.75em">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-35_9912cd4623eddf4eea24edda92005c2a">
-<div class="cell-output-display">
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">country</th>
-<th style="text-align: right;">pop</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Afghanistan</td>
-<td style="text-align: right;">8.4</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Afghanistan</td>
-<td style="text-align: right;">9.2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Afghanistan</td>
-<td style="text-align: right;">10.3</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Afghanistan</td>
-<td style="text-align: right;">11.5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Afghanistan</td>
-<td style="text-align: right;">13.1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Afghanistan</td>
-<td style="text-align: right;">14.9</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</section>
 <section id="summarise" class="slide level2 smaller">
 <h2><code>summarise()</code></h2>
 <h3 id="collapse-data-frame-to-a-single-summary">collapse data frame to a single summary</h3>
 <div class="columns">
 <div class="column" style="width:45%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-36_d966a81b26f0776a7361639bc508a259">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">summarise</span>(<span class="at">mean_lifeExp =</span> <span class="fu">mean</span>(lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-34_ea0c70abfea945c188dd85efe5e31224">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">summarise</span>(<span class="at">mean_lifeExp =</span> <span class="fu">mean</span>(lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-37_bd9cd67d4ad5a668217fa78ba742c2cf">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-35_abaeee1e70fa4ce7dfcc4fb034427bb4">
 <div class="cell-output-display">
 <table>
 <thead>
@@ -1749,12 +1696,12 @@
 
 </div><div class="column" style="width:50%;">
 <p>Often used with <code>groupby()</code> to summarise by groups</p>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-38_049ba98ba152928582acbe723dda5cee">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-3"><a href="#cb25-3"></a>  <span class="fu">summarise</span>(<span class="at">mean_lifeExp =</span> <span class="fu">mean</span>(lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-36_b3f030c807de75857aad25533861e04a">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">summarise</span>(<span class="at">mean_lifeExp =</span> <span class="fu">mean</span>(lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-39_9d5a8cb1f47f6656539863affc22d783">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-37_f8c8fa4653784ff2eabe40e13744c58f">
 <div class="cell-output-display">
 <table>
 <thead>
@@ -1805,11 +1752,11 @@
 <h3 id="count-number-of-observations-in-each-group">Count number of observations in each group</h3>
 <div class="columns">
 <div class="column" style="width:45%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-40_18a48b4b31fc5082c1625261e6d6be4d">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">count</span>(continent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-38_1807a426afa00416bd4a286689bf4f1e">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">count</span>(continent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-41_1fd4c8ce87dfaf5d46fb4429c905b196">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-39_dc5450f1f2a8fb82dc63a4d1b0a6a541">
 <div class="cell-output-display">
 <table>
 <thead>
@@ -1846,12 +1793,12 @@
 </div><div class="column" style="width:5%;">
 
 </div><div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-42_22306622002335497d3a97df7d2ef727">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span> </span>
-<span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">summarise</span>(<span class="at">observations =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-40_aab8b83b61f14c2f8d81ef51cf381f04">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">summarise</span>(<span class="at">observations =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-43_18fe4c22c0e0dca380e56ab9f50a6f44">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-41_d361f1d7c2c63037111492ed056614b7">
 <div class="cell-output-display">
 <table>
 <thead>

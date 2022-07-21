@@ -245,7 +245,7 @@ knitr::kable(gapminder %>%
 
 ## `filter()`{.smaller}
 
-Using `%>%` to match more than one value
+Using `%in%` to match more than one value
 
 ```{r}
 #| echo: true
@@ -569,33 +569,6 @@ gapminder %>%
 
 ::: footer
 [Source](https://www.sharpsightlabs.com/blog/case-when-r/)
-:::
-
-## `transmute`()
-
-If you only want to keep the new variable use `transmute()`
-
-::: fragment
-```{r}
-#| echo: true
-#| eval: false
-gapminder %>% 
-  select(country, pop) %>% 
-  mutate(pop = round(pop/1000000, 1))
-  
-```
-:::
-
-::: fragment
-::: {style="font-size: 0.75em"}
-```{r}
-#| echo: false
-knitr::kable(gapminder %>% 
-  select(country, pop) %>% 
-  mutate(pop = round(pop/1000000, 1)) %>% 
-    head())
-```
-:::
 :::
 
 ## `summarise()` {.smaller}
